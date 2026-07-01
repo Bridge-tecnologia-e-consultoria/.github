@@ -21,6 +21,7 @@
 - ✅ Implementar política de segurança de secrets
 - ✅ Criar guidelines de contribuição
 
+#### Status: 🔄 EM CONFIGURAÇÃO
 #### Tarefas Priorizadas:
 - [ ] Criar Teams: @leads, @frontend, @backend, @devops, @qa, @product
 - [ ] Mapear permissões por time
@@ -42,6 +43,7 @@
 - ✅ Criar dashboards de status de CI/CD
 - ✅ Implementar rollback automático em caso de falha
 
+#### Status: 🔄 EM CONFIGURAÇÃO
 #### Tarefas Priorizadas:
 - [ ] Criar template workflow padrão
 - [ ] Deploy em VetBooking, PetSkin, LaConelli, ClubFlow
@@ -63,6 +65,7 @@
 - ✅ Setup compliance reporting (GDPR, LGPD)
 - ✅ Criar rotinas de security audits
 
+#### Status: 🔄 EM CONFIGURAÇÃO
 #### Tarefas Priorizadas:
 - [ ] Habilitar GitHub Advanced Security em todos os repos
 - [ ] Setup CodeQL scanning
@@ -84,6 +87,7 @@
 - ✅ Criar views customizadas por role
 - ✅ Implementar automation (auto-triage, auto-label)
 
+#### Status: 🔄 EM CONFIGURAÇÃO
 #### Tarefas Priorizadas:
 - [ ] Criar Project: "Bridge-Roadmap" (org-wide)
 - [ ] Criar Projects por produto: VetBooking, PetSkin, LaConelli, ClubFlow, LiderançaTech
@@ -105,6 +109,7 @@
 - ✅ Criar quality gates (gates de qualidade)
 - ✅ Setup test result reporting e dashboards
 
+#### Status: 🔄 EM CONFIGURAÇÃO
 #### Tarefas Priorizadas:
 - [ ] Criar test strategy por projeto
 - [ ] Setup coverage enforcement (minimum 80%)
@@ -126,6 +131,7 @@
 - ✅ Implementar wiki e troubleshooting guides
 - ✅ Criar onboarding documentation para novos devs
 
+#### Status: 🔄 EM CONFIGURAÇÃO
 #### Tarefas Priorizadas:
 - [ ] Criar ARCHITECTURE.md para cada projeto
 - [ ] Setup ADR (Architecture Decision Records)
@@ -147,6 +153,7 @@
 - ✅ Configurar automatic issue linking
 - ✅ Setup GitOps workflows (ArgoCD, Flux)
 
+#### Status: 🔄 EM CONFIGURAÇÃO
 #### Tarefas Priorizadas:
 - [ ] Configurar Slack integration (workflows)
 - [ ] Setup branch notifications
@@ -204,6 +211,20 @@ ORQUESTRADOR PRINCIPAL (@antonioneto19)
     │                  ↓
     └─→ Dr. QUALITY (Test Strategy, Coverage)
 ```
+
+---
+
+## 📞 Contatos PhD
+
+| Agente | Foco | Escalation |
+|--------|------|----------|
+| Dr. GOVERNANCE | @antonioneto19 | Critical org changes |
+| Dr. PIPELINE | @antonioneto19 | Build/Deploy issues |
+| Dr. SECURITY | @antonioneto19 | CVE/Vulnerability alerts |
+| Dr. PROJECT | @antonioneto19 | Planning/Roadmap |
+| Dr. QUALITY | @antonioneto19 | Test failures/Coverage |
+| Dr. DOCUMENTATION | @antonioneto19 | Docs updates/ADRs |
+| Dr. INTEGRATION | @antonioneto19 | Integration failures |
 
 ---
 
