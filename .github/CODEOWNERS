@@ -1,0 +1,80 @@
+# .github/CODEOWNERS
+# Bridge Tecnologia e Consultoria - Code Ownership Rules
+
+# Global owners - leads team reviews everything
+* @Bridge-tecnologia-e-consultoria/leads
+
+# ============================================================
+# FRONTEND CODE OWNERSHIP
+# ============================================================
+/src/components/     @Bridge-tecnologia-e-consultoria/frontend
+/src/pages/          @Bridge-tecnologia-e-consultoria/frontend
+/src/ui/             @Bridge-tecnologia-e-consultoria/frontend
+/src/layouts/        @Bridge-tecnologia-e-consultoria/frontend
+/src/hooks/          @Bridge-tecnologia-e-consultoria/frontend
+*.tsx                @Bridge-tecnologia-e-consultoria/frontend
+*.jsx                @Bridge-tecnologia-e-consultoria/frontend
+*.css                @Bridge-tecnologia-e-consultoria/frontend
+*.scss               @Bridge-tecnologia-e-consultoria/frontend
+
+# ============================================================
+# BACKEND CODE OWNERSHIP
+# ============================================================
+/api/                @Bridge-tecnologia-e-consultoria/backend
+/src/server/         @Bridge-tecnologia-e-consultoria/backend
+/src/services/       @Bridge-tecnologia-e-consultoria/backend
+/src/models/         @Bridge-tecnologia-e-consultoria/backend
+/src/database/       @Bridge-tecnologia-e-consultoria/backend
+*.py                 @Bridge-tecnologia-e-consultoria/backend
+
+# ============================================================
+# DEVOPS & INFRASTRUCTURE
+# ============================================================
+/.github/workflows/  @Bridge-tecnologia-e-consultoria/devops
+/docker/             @Bridge-tecnologia-e-consultoria/devops
+/k8s/                @Bridge-tecnologia-e-consultoria/devops
+/terraform/          @Bridge-tecnologia-e-consultoria/devops
+/scripts/            @Bridge-tecnologia-e-consultoria/devops
+Dockerfile*          @Bridge-tecnologia-e-consultoria/devops
+docker-compose*      @Bridge-tecnologia-e-consultoria/devops
+.github/             @Bridge-tecnologia-e-consultoria/devops
+
+# ============================================================
+# QA & TESTING
+# ============================================================
+/tests/              @Bridge-tecnologia-e-consultoria/qa
+/e2e/                @Bridge-tecnologia-e-consultoria/qa
+/*.test.ts           @Bridge-tecnologia-e-consultoria/qa
+/*.spec.ts           @Bridge-tecnologia-e-consultoria/qa
+/*.test.js           @Bridge-tecnologia-e-consultoria/qa
+/*.spec.js           @Bridge-tecnologia-e-consultoria/qa
+jest.config.*        @Bridge-tecnologia-e-consultoria/qa
+pytest.ini           @Bridge-tecnologia-e-consultoria/qa
+
+# ============================================================
+# PRODUCT & DOCUMENTATION
+# ============================================================
+/docs/               @Bridge-tecnologia-e-consultoria/product
+*.md                 @Bridge-tecnologia-e-consultoria/product
+README.md            @Bridge-tecnologia-e-consultoria/product
+CHANGELOG.md         @Bridge-tecnologia-e-consultoria/product
+ARCHITECTURE.md      @Bridge-tecnologia-e-consultoria/product
+
+# ============================================================
+# CONFIGURATION FILES
+# ============================================================
+package.json         @Bridge-tecnologia-e-consultoria/devops
+package-lock.json    @Bridge-tecnologia-e-consultoria/devops
+pyproject.toml       @Bridge-tecnologia-e-consultoria/devops
+requirements.txt     @Bridge-tecnologia-e-consultoria/devops
+.env.example         @Bridge-tecnologia-e-consultoria/devops
+.eslintrc*           @Bridge-tecnologia-e-consultoria/frontend
+.prettierrc*         @Bridge-tecnologia-e-consultoria/frontend
+tsconfig.json        @Bridge-tecnologia-e-consultoria/frontend
+
+# ============================================================
+# SECURITY & COMPLIANCE
+# ============================================================
+SECURITY.md          @Bridge-tecnologia-e-consultoria/leads
+COMPLIANCE.md        @Bridge-tecnologia-e-consultoria/leads
+.github/CODEOWNERS   @Bridge-tecnologia-e-consultoria/leads
