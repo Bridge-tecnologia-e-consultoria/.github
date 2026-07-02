@@ -1,0 +1,302 @@
+name: 🔴 Dr. GOVERNANCE - Setup Org Teams
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (only show what would be created)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  setup-teams:
+    name: Create & Configure Organization Teams
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create team - leads (Admin)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Creating @leads team"
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "[DRY RUN] Would create team: leads"
+          else
+            gh api \
+              --method POST \
+              /orgs/Bridge-tecnologia-e-consultoria/teams \
+              --field name="leads" \
+              --field description="Líderes técnicos e arquitetos" \
+              --field privacy="closed" \
+              || echo "Team 'leads' may already exist, skipping creation"
+          fi
+          echo "::endgroup::"
+
+      - name: Create team - frontend (Maintain)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Creating @frontend team"
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "[DRY RUN] Would create team: frontend"
+          else
+            gh api \
+              --method POST \
+              /orgs/Bridge-tecnologia-e-consultoria/teams \
+              --field name="frontend" \
+              --field description="Desenvolvedores Frontend" \
+              --field privacy="closed" \
+              || echo "Team 'frontend' may already exist, skipping creation"
+          fi
+          echo "::endgroup::"
+
+      - name: Create team - backend (Maintain)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Creating @backend team"
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "[DRY RUN] Would create team: backend"
+          else
+            gh api \
+              --method POST \
+              /orgs/Bridge-tecnologia-e-consultoria/teams \
+              --field name="backend" \
+              --field description="Desenvolvedores Backend" \
+              --field privacy="closed" \
+              || echo "Team 'backend' may already exist, skipping creation"
+          fi
+          echo "::endgroup::"
+
+      - name: Create team - devops (Admin)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Creating @devops team"
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "[DRY RUN] Would create team: devops"
+          else
+            gh api \
+              --method POST \
+              /orgs/Bridge-tecnologia-e-consultoria/teams \
+              --field name="devops" \
+              --field description="DevOps e Infraestrutura" \
+              --field privacy="closed" \
+              || echo "Team 'devops' may already exist, skipping creation"
+          fi
+          echo "::endgroup::"
+
+      - name: Create team - qa (Push)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Creating @qa team"
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "[DRY RUN] Would create team: qa"
+          else
+            gh api \
+              --method POST \
+              /orgs/Bridge-tecnologia-e-consultoria/teams \
+              --field name="qa" \
+              --field description="QA e Testes" \
+              --field privacy="closed" \
+              || echo "Team 'qa' may already exist, skipping creation"
+          fi
+          echo "::endgroup::"
+
+      - name: Create team - product (Push)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Creating @product team"
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "[DRY RUN] Would create team: product"
+          else
+            gh api \
+              --method POST \
+              /orgs/Bridge-tecnologia-e-consultoria/teams \
+              --field name="product" \
+              --field description="Product Managers" \
+              --field privacy="closed" \
+              || echo "Team 'product' may already exist, skipping creation"
+          fi
+          echo "::endgroup::"
+
+      - name: Add member @antonioneto19 to leads
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Adding @antonioneto19 to @leads"
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "[DRY RUN] Would add antonioneto19 to leads as maintainer"
+          else
+            gh api \
+              --method PUT \
+              /orgs/Bridge-tecnologia-e-consultoria/teams/leads/memberships/antonioneto19 \
+              --field role="maintainer" \
+              || echo "Could not add member to leads"
+          fi
+          echo "::endgroup::"
+
+      - name: Configure repo access - leads (admin on all repos)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Setting @leads repo permissions"
+          REPOS="vetbooking petskin laconelli clubflow lideranca-tech .github"
+          for repo in $REPOS; do
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "[DRY RUN] Would grant leads admin on $repo"
+            else
+              gh api \
+                --method PUT \
+                /orgs/Bridge-tecnologia-e-consultoria/teams/leads/repos/Bridge-tecnologia-e-consultoria/$repo \
+                --field permission="admin" \
+                || echo "Could not set admin on $repo for leads"
+            fi
+          done
+          echo "::endgroup::"
+
+      - name: Configure repo access - frontend (maintain on clubflow, laconelli, petskin)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Setting @frontend repo permissions"
+          REPOS="clubflow laconelli petskin"
+          for repo in $REPOS; do
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "[DRY RUN] Would grant frontend maintain on $repo"
+            else
+              gh api \
+                --method PUT \
+                /orgs/Bridge-tecnologia-e-consultoria/teams/frontend/repos/Bridge-tecnologia-e-consultoria/$repo \
+                --field permission="maintain" \
+                || echo "Could not set maintain on $repo for frontend"
+            fi
+          done
+          echo "::endgroup::"
+
+      - name: Configure repo access - backend (maintain on vetbooking, lideranca-tech)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Setting @backend repo permissions"
+          REPOS="vetbooking lideranca-tech"
+          for repo in $REPOS; do
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "[DRY RUN] Would grant backend maintain on $repo"
+            else
+              gh api \
+                --method PUT \
+                /orgs/Bridge-tecnologia-e-consultoria/teams/backend/repos/Bridge-tecnologia-e-consultoria/$repo \
+                --field permission="maintain" \
+                || echo "Could not set maintain on $repo for backend"
+            fi
+          done
+          echo "::endgroup::"
+
+      - name: Configure repo access - devops (admin on all repos)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Setting @devops repo permissions"
+          REPOS="vetbooking petskin laconelli clubflow lideranca-tech .github"
+          for repo in $REPOS; do
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "[DRY RUN] Would grant devops admin on $repo"
+            else
+              gh api \
+                --method PUT \
+                /orgs/Bridge-tecnologia-e-consultoria/teams/devops/repos/Bridge-tecnologia-e-consultoria/$repo \
+                --field permission="admin" \
+                || echo "Could not set admin on $repo for devops"
+            fi
+          done
+          echo "::endgroup::"
+
+      - name: Configure repo access - qa (push on all repos)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Setting @qa repo permissions"
+          REPOS="vetbooking petskin laconelli clubflow lideranca-tech .github"
+          for repo in $REPOS; do
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "[DRY RUN] Would grant qa push on $repo"
+            else
+              gh api \
+                --method PUT \
+                /orgs/Bridge-tecnologia-e-consultoria/teams/qa/repos/Bridge-tecnologia-e-consultoria/$repo \
+                --field permission="push" \
+                || echo "Could not set push on $repo for qa"
+            fi
+          done
+          echo "::endgroup::"
+
+      - name: Configure repo access - product (push on all repos)
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Setting @product repo permissions"
+          REPOS="vetbooking petskin laconelli clubflow lideranca-tech .github"
+          for repo in $REPOS; do
+            if [ "$DRY_RUN" = "true" ]; then
+              echo "[DRY RUN] Would grant product push on $repo"
+            else
+              gh api \
+                --method PUT \
+                /orgs/Bridge-tecnologia-e-consultoria/teams/product/repos/Bridge-tecnologia-e-consultoria/$repo \
+                --field permission="push" \
+                || echo "Could not set push on $repo for product"
+            fi
+          done
+          echo "::endgroup::"
+
+      - name: Validate teams created
+        env:
+          GH_TOKEN: ${{ secrets.ORG_ADMIN_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          echo "::group::Validating teams"
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "[DRY RUN] Would validate all 6 teams exist"
+          else
+            echo "=== Teams in Bridge-tecnologia-e-consultoria ==="
+            gh api /orgs/Bridge-tecnologia-e-consultoria/teams \
+              --jq '.[] | "✅ \(.name) - \(.description // "no description")"'
+          fi
+          echo "::endgroup::"
+
+      - name: Summary
+        run: |
+          echo "## 🔴 Dr. GOVERNANCE - Task 3 Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ Teams Configured" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Team | Permission | Repos | Members |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|-----------|-------|---------|" >> $GITHUB_STEP_SUMMARY
+          echo "| @leads | Admin | All repos | @antonioneto19 |" >> $GITHUB_STEP_SUMMARY
+          echo "| @frontend | Maintain | clubflow, laconelli, petskin | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| @backend | Maintain | vetbooking, lideranca-tech | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| @devops | Admin | All repos | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| @qa | Push | All repos | - |" >> $GITHUB_STEP_SUMMARY
+          echo "| @product | Push | All repos | - |" >> $GITHUB_STEP_SUMMARY
