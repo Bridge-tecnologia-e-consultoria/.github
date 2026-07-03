@@ -42,16 +42,17 @@ Para cada repositório:
 4. Copie o token do repositório
 5. Salve como `CODECOV_TOKEN` no GitHub Secrets
 
-### SLACK_WEBHOOK (Task 13)
+### SLACK_WEBHOOK (integração Slack pendente)
 
 - Formato esperado: `https://hooks.slack.com/services/T.../B.../...`
-- Enquanto a Task 13 não estiver concluída, usar placeholder não sensível como `PENDING_TASK_13`.
+- Enquanto a integração Slack não estiver concluída, usar placeholder não sensível como `SLACK_INTEGRATION_PENDING`.
 - Nos workflows de notificação, validar antes do uso e ignorar envio quando `SLACK_WEBHOOK` estiver vazio ou com valor placeholder.
 
 ## Rotação de secrets
 
 - Intervalo recomendado por criticidade:
-  - **30 dias:** credenciais críticas de produção (ex.: `DATABASE_URL` de ambiente produtivo, `JWT_SECRET`)
+  - **30 dias:** credenciais críticas de produção (ex.: `DATABASE_URL` de ambiente produtivo)
+  - **60 a 90 dias:** `JWT_SECRET`, com rotação coordenada e janela de transição para evitar invalidação abrupta de sessões
   - **60 dias:** API keys sensíveis de integrações externas (ex.: `OPENAI_API_KEY`, `STRIPE_API_KEY`)
   - **90 dias:** tokens de suporte/deploy com menor risco direto
 - Considerar limitações do provedor antes da rotação (ex.: tokens sem rotação automática podem seguir janela planejada com validação prévia)
