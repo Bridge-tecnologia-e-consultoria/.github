@@ -318,7 +318,7 @@ Dr. INTEGRATION       ███░░░░░░░░░░░░░░░░ 
 
 **PhD Agent Fleet Dashboard v1.0**  
 Atualizado automaticamente a cada 30 minutos  
-📊 [Ver em tempo real](https://github.com/Bridge-tecnologia-e-consultoria/.github/projects/1)
+📊 [Ver projects da organização](https://github.com/orgs/Bridge-tecnologia-e-consultoria/projects)
 
 ---
 

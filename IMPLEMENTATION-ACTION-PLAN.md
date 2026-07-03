@@ -330,6 +330,7 @@ updates:
 - **Objetivo:** Criar projects para gestão ágil
 - **Tempo:** 2 horas
 - **Deliverable:** 6 projects criados e configurados
+- **Completion Date:** 2026-07-03
 
 **Projects a Criar:**
 ```
@@ -369,12 +370,15 @@ updates:
 10.7 ✅ Adicionar custom fields (próximo step)
 ```
 
+- **Documentação:** `PROJECTS-SETUP.md`
+
 ---
 
 #### Task 11: Configurar Custom Fields em Projects ✅
 - **Objetivo:** Setup de campos customizados
 - **Tempo:** 1.5 horas
 - **Deliverable:** Fields configurados em todos projects
+- **Completion Date:** 2026-07-03
 
 **Fields por Project:**
 ```
@@ -414,12 +418,15 @@ updates:
 11.8 ✅ Salvar e validar
 ```
 
+- **Documentação:** `PROJECTS-SETUP.md`
+
 ---
 
 #### Task 12: Setup Views & Dashboards ✅
 - **Objetivo:** Criar views para melhor visualização
 - **Tempo:** 1 hora
 - **Deliverable:** Views criadas em todos projects
+- **Completion Date:** 2026-07-03
 
 **Views por Project:**
 ```
@@ -427,7 +434,7 @@ Bridge-Roadmap:
   ✅ View 1: "By Status" (Status column)
   ✅ View 2: "By Team" (Team column)
   ✅ View 3: "By Priority" (Priority column)
-  ✅ View 4: "By Project" (Repository column)
+  ✅ View 4: "By Repository" (Repository column)
   
 [Product] Development:
   ✅ View 1: "By Status" (Status column)
@@ -446,6 +453,8 @@ Bridge-Roadmap:
 12.7 ✅ Validar que views funcionam
 12.8 ✅ Testar filtering e sorting
 ```
+
+- **Documentação:** `PROJECTS-SETUP.md`
 
 ---
 
