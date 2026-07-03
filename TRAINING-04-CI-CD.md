@@ -38,7 +38,7 @@ Um pipeline saudável separa responsabilidades:
 | `coverage` | medir cobertura mínima | >= 80% conforme política |
 | `deploy` | publicar em ambiente | status de sucesso/falha + logs |
 
-Separar jobs ajuda troubleshooting. Se `build` falhar mas `lint` passar, o time já reduz o escopo da investigação. Se միայն `coverage` quebra, talvez o problema esteja em testes ausentes ou alteração de threshold, não em funcionalidade principal.
+Separar jobs ajuda troubleshooting. Se `build` falhar mas `lint` passar, o time já reduz o escopo da investigação. Se apenas `coverage` quebra, talvez o problema esteja em testes ausentes ou alteração de threshold, não em funcionalidade principal.
 
 ### 4. Troubleshooting: como debugar falhas
 A ordem certa reduz tempo perdido:
@@ -179,4 +179,3 @@ A: Use o comando padrão da stack do repositório antes de abrir o PR.
 
 ## 🆘 Ajuda & Suporte
 Se um workflow falhar, consulte primeiro os logs e os documentos de troubleshooting. Se o erro envolver secrets, segurança ou rollback, trate como incidente operacional e escale para os owners adequados. Se houver dúvida sobre thresholds, matriz de testes ou responsabilidade do job, consulte `QUALITY-CONFIG.md` e mencione `@devops` ou `@qa` no contexto correto.
-
