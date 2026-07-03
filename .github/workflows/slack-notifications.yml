@@ -1,0 +1,53 @@
+name: Slack Notifications
+
+on:
+  pull_request:
+    types: [opened, reopened, closed]
+  issues:
+    types: [opened, reopened, closed]
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build notification payload
+        id: payload
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_MERGED: ${{ github.event.pull_request.merged }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            STATUS="$ACTION"
+            if [ "$ACTION" = "closed" ] && [ "$PR_MERGED" = "true" ]; then
+              STATUS="merged"
+            fi
+            TEXT="📣 [${REPOSITORY}] PR ${STATUS}: ${PR_TITLE} | Author: @${PR_AUTHOR} | ${PR_URL}"
+          elif [ "$EVENT_NAME" = "issues" ]; then
+            TEXT="📝 [${REPOSITORY}] Issue ${ACTION}: #${ISSUE_NUMBER} ${ISSUE_TITLE} | Author: @${ISSUE_AUTHOR} | ${ISSUE_URL}"
+          else
+            TEXT="ℹ️ [${REPOSITORY}] Slack notification workflow triggered manually"
+          fi
+
+          PAYLOAD=$(jq -cn --arg text "$TEXT" '{text: $text}')
+          echo "payload=$PAYLOAD" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Slack (#dev-notifications)
+        env:
+          SLACK_WEBHOOK_MAIN: ${{ secrets.SLACK_WEBHOOK_MAIN }}
+          PAYLOAD: ${{ steps.payload.outputs.payload }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_MAIN" ]; then
+            echo "SLACK_WEBHOOK_MAIN secret is not set."
+            exit 1
+          fi
+          curl -sS -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_MAIN"

@@ -1,0 +1,51 @@
+name: Slack Weekly Report
+
+on:
+  schedule:
+    - cron: '0 17 * * 5'
+  workflow_dispatch:
+
+jobs:
+  weekly-report:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Collect weekly metrics
+        id: metrics
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          SINCE="$(date -u -d '7 days ago' +%Y-%m-%dT00:00:00Z)"
+          PRS_MERGED=$(gh api "repos/${REPOSITORY}/pulls" -f state=closed -f sort=updated -f direction=desc -f per_page=100 | jq --arg since "$SINCE" '[.[] | select(.merged_at != null and .updated_at >= $since)] | length')
+          ISSUES_CLOSED=$(gh api "repos/${REPOSITORY}/issues" -f state=closed -f since="$SINCE" -f per_page=100 | jq '[.[] | select(.pull_request == null)] | length')
+          COMMITS=$(gh api "repos/${REPOSITORY}/commits" -f since="$SINCE" -f per_page=100 | jq 'length')
+
+          echo "prs_merged=$PRS_MERGED" >> "$GITHUB_OUTPUT"
+          echo "issues_closed=$ISSUES_CLOSED" >> "$GITHUB_OUTPUT"
+          echo "commits=$COMMITS" >> "$GITHUB_OUTPUT"
+          echo "since=$SINCE" >> "$GITHUB_OUTPUT"
+
+      - name: Build weekly payload
+        id: payload
+        env:
+          REPOSITORY: ${{ github.repository }}
+          PRS_MERGED: ${{ steps.metrics.outputs.prs_merged }}
+          ISSUES_CLOSED: ${{ steps.metrics.outputs.issues_closed }}
+          COMMITS: ${{ steps.metrics.outputs.commits }}
+          SINCE: ${{ steps.metrics.outputs.since }}
+        run: |
+          TODAY="$(date -u +%Y-%m-%d)"
+          TEXT="📈 Weekly Report (${TODAY}) [${REPOSITORY}] | Since: ${SINCE} | PRs merged: ${PRS_MERGED} | Issues closed: ${ISSUES_CLOSED} | Commits: ${COMMITS}"
+          PAYLOAD=$(jq -cn --arg text "$TEXT" --arg channel "#weekly-report" '{text: $text, channel: $channel}')
+          echo "payload=$PAYLOAD" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Slack (#weekly-report)
+        env:
+          SLACK_WEBHOOK_MAIN: ${{ secrets.SLACK_WEBHOOK_MAIN }}
+          PAYLOAD: ${{ steps.payload.outputs.payload }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_MAIN" ]; then
+            echo "SLACK_WEBHOOK_MAIN secret is not set."
+            exit 1
+          fi
+          curl -sS -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_MAIN"

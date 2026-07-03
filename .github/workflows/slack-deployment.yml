@@ -1,0 +1,48 @@
+name: Slack Deployment Alerts
+
+on:
+  workflow_run:
+    workflows:
+      - CI/CD
+      - Deploy
+      - Deployment
+      - Release
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  notify-deployment:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.workflow_run.name, 'Deploy') || contains(github.event.workflow_run.name, 'deploy') || contains(github.event.workflow_run.name, 'Release')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build deployment payload
+        id: payload
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+          COMMIT: ${{ github.event.workflow_run.head_sha }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            TEXT="🚀 [${REPOSITORY}] Slack deployment workflow triggered manually"
+          else
+            SHORT_SHA="${COMMIT:0:7}"
+            TEXT="🚀 [${REPOSITORY}] Deployment workflow '${WORKFLOW_NAME}' finished with status: ${CONCLUSION} | Branch: ${BRANCH} | Commit: ${SHORT_SHA} | ${RUN_URL}"
+          fi
+
+          PAYLOAD=$(jq -cn --arg text "$TEXT" '{text: $text}')
+          echo "payload=$PAYLOAD" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Slack (#deployments)
+        env:
+          SLACK_WEBHOOK_DEPLOYMENTS: ${{ secrets.SLACK_WEBHOOK_DEPLOYMENTS }}
+          PAYLOAD: ${{ steps.payload.outputs.payload }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_DEPLOYMENTS" ]; then
+            echo "SLACK_WEBHOOK_DEPLOYMENTS secret is not set."
+            exit 1
+          fi
+          curl -sS -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_DEPLOYMENTS"

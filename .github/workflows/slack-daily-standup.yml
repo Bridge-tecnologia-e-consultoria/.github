@@ -1,0 +1,51 @@
+name: Slack Daily Standup
+
+on:
+  schedule:
+    - cron: '0 9 * * 1-5'
+  workflow_dispatch:
+
+jobs:
+  daily-summary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Collect yesterday metrics
+        id: metrics
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          SINCE="$(date -u -d '1 day ago' +%Y-%m-%dT00:00:00Z)"
+          PRS=$(gh api "repos/${REPOSITORY}/pulls" -f state=all -f sort=updated -f direction=desc -f per_page=100 | jq --arg since "$SINCE" '[.[] | select(.updated_at >= $since)] | length')
+          ISSUES=$(gh api "repos/${REPOSITORY}/issues" -f state=all -f since="$SINCE" -f per_page=100 | jq '[.[] | select(.pull_request == null)] | length')
+          COMMITS=$(gh api "repos/${REPOSITORY}/commits" -f since="$SINCE" -f per_page=100 | jq 'length')
+
+          echo "prs=$PRS" >> "$GITHUB_OUTPUT"
+          echo "issues=$ISSUES" >> "$GITHUB_OUTPUT"
+          echo "commits=$COMMITS" >> "$GITHUB_OUTPUT"
+          echo "since=$SINCE" >> "$GITHUB_OUTPUT"
+
+      - name: Build standup payload
+        id: payload
+        env:
+          REPOSITORY: ${{ github.repository }}
+          PRS: ${{ steps.metrics.outputs.prs }}
+          ISSUES: ${{ steps.metrics.outputs.issues }}
+          COMMITS: ${{ steps.metrics.outputs.commits }}
+          SINCE: ${{ steps.metrics.outputs.since }}
+        run: |
+          TODAY="$(date -u +%Y-%m-%d)"
+          TEXT="📊 Daily Standup (${TODAY}) [${REPOSITORY}] | Since: ${SINCE} | PRs updated: ${PRS} | Issues updated: ${ISSUES} | Commits: ${COMMITS}"
+          PAYLOAD=$(jq -cn --arg text "$TEXT" --arg channel "#standup" '{text: $text, channel: $channel}')
+          echo "payload=$PAYLOAD" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Slack (#standup)
+        env:
+          SLACK_WEBHOOK_MAIN: ${{ secrets.SLACK_WEBHOOK_MAIN }}
+          PAYLOAD: ${{ steps.payload.outputs.payload }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_MAIN" ]; then
+            echo "SLACK_WEBHOOK_MAIN secret is not set."
+            exit 1
+          fi
+          curl -sS -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_MAIN"
