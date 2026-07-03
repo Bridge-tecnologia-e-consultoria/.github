@@ -17,7 +17,13 @@ Este guia centraliza os secrets necessários para os repositórios da organizaç
 | `CODECOV_TOKEN` | Sim | Todos os 5 | Upload de cobertura nos workflows `coverage.yml` e `ci-cd.yml` |
 | `SLACK_WEBHOOK` | Sim (placeholder até Task 13) | Todos os 5 | Notificações de build/deploy |
 | `DATABASE_URL` | Condicional | vetbooking, lideranca-tech | Conexão com banco PostgreSQL |
-| `API_KEYS` (ex.: `STRIPE_API_KEY`, `OPENAI_API_KEY`) | Condicional | Conforme aplicação | Integrações externas |
+| `REDIS_URL` | Condicional | vetbooking | Cache/backend |
+| `STRIPE_API_KEY` | Condicional | laconelli | Integração de pagamentos |
+| `OPENAI_API_KEY` | Condicional | lideranca-tech | Integração de IA |
+| `SUPABASE_URL` | Condicional | clubflow | Backend Supabase |
+| `SUPABASE_ANON_KEY` | Condicional | clubflow | Chave pública Supabase |
+| `NEXT_PUBLIC_API_URL` | Condicional | petskin, laconelli | Endpoint público frontend |
+| `VERCEL_TOKEN` | Condicional | petskin, laconelli, clubflow | Deploy na Vercel |
 
 ## Como adicionar/atualizar secrets
 
@@ -39,12 +45,15 @@ Para cada repositório:
 ### SLACK_WEBHOOK (Task 13)
 
 - Formato esperado: `https://hooks.slack.com/services/T.../B.../...`
-- Enquanto a Task 13 não estiver concluída, usar placeholder não sensível como `PENDING_TASK_13` para evitar falha de lookup no workflow.
+- Enquanto a Task 13 não estiver concluída, usar placeholder não sensível como `PENDING_TASK_13`.
+- Nos workflows de notificação, validar antes do uso e ignorar envio quando `SLACK_WEBHOOK` estiver vazio ou com valor placeholder.
 
 ## Rotação de secrets
 
-- Frequência recomendada (baseline): a cada **90 dias**
-- Ajustar o intervalo conforme criticidade do secret
+- Intervalo recomendado por criticidade:
+  - **30 dias:** credenciais críticas de produção (ex.: `DATABASE_URL` de ambiente produtivo)
+  - **60 dias:** API keys sensíveis de integrações externas (ex.: `OPENAI_API_KEY`, `STRIPE_API_KEY`)
+  - **90 dias:** tokens de suporte/deploy com menor risco direto
 - Considerar limitações do provedor antes da rotação (ex.: tokens sem rotação automática podem seguir janela planejada com validação prévia)
 - Rotacionar imediatamente em caso de incidente ou exposição
 - Sempre atualizar o secret no GitHub antes de invalidar o antigo (janela de transição)
