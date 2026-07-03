@@ -1,8 +1,8 @@
 # 📊 PROJECTS-SETUP
 ## GitHub Projects V2 - Bridge Tecnologia e Consultoria
 
-**Status:** ✅ Operacional  
-**Data:** 2026-07-03  
+**Status:** ✅ Operacional
+**Data:** 2026-07-03
 **Escopo:** Tasks 10-12 da FASE D
 
 ---
