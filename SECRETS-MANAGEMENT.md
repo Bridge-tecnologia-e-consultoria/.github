@@ -23,7 +23,7 @@ Este guia centraliza os secrets necessários para os repositórios da organizaç
 
 Para cada repositório:
 
-1. Acesse `https://github.com/Bridge-tecnologia-e-consultoria/<repo>/settings/secrets/actions`
+1. Acesse `https://github.com/Bridge-tecnologia-e-consultoria/<repo>/settings/secrets/actions` (substitua `<repo>` por `vetbooking`, `petskin`, `laconelli`, `clubflow` ou `lideranca-tech`)
 2. Clique em **New repository secret**
 3. Cadastre o secret com o nome exato (case-sensitive)
 4. Repita para todos os secrets obrigatórios e específicos do app
@@ -43,7 +43,7 @@ Para cada repositório:
 
 ## Rotação de secrets
 
-- Frequência recomendada: a cada **90 dias**
+- Frequência recomendada (baseline): a cada **90 dias**, ajustando conforme criticidade do secret e limitações do provedor
 - Rotacionar imediatamente em caso de incidente ou exposição
 - Sempre atualizar o secret no GitHub antes de invalidar o antigo (janela de transição)
 
