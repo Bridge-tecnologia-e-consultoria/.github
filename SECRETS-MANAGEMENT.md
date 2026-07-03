@@ -17,6 +17,7 @@ Este guia centraliza os secrets necessários para os repositórios da organizaç
 | `CODECOV_TOKEN` | Sim | Todos os 5 | Upload de cobertura nos workflows `coverage.yml` e `ci-cd.yml` |
 | `SLACK_WEBHOOK` | Sim (placeholder até Task 13) | Todos os 5 | Notificações de build/deploy |
 | `DATABASE_URL` | Condicional | vetbooking, lideranca-tech | Conexão com banco PostgreSQL |
+| `JWT_SECRET` | Condicional | vetbooking, lideranca-tech | Assinatura/autenticação JWT (valor único por aplicação) |
 | `REDIS_URL` | Condicional | vetbooking | Cache/backend |
 | `STRIPE_API_KEY` | Condicional | laconelli | Integração de pagamentos |
 | `OPENAI_API_KEY` | Condicional | lideranca-tech | Integração de IA |
@@ -51,7 +52,7 @@ Para cada repositório:
 ## Rotação de secrets
 
 - Intervalo recomendado por criticidade:
-  - **30 dias:** credenciais críticas de produção (ex.: `DATABASE_URL` de ambiente produtivo)
+  - **30 dias:** credenciais críticas de produção (ex.: credenciais dentro de `DATABASE_URL` em ambiente produtivo)
   - **60 dias:** `JWT_SECRET`, com rotação coordenada e janela de transição para evitar invalidação abrupta de sessões
   - **60 dias:** API keys sensíveis de integrações externas (ex.: `OPENAI_API_KEY`, `STRIPE_API_KEY`)
   - **90 dias:** tokens de suporte/deploy com menor risco direto
