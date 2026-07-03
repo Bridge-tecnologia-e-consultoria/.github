@@ -39,11 +39,13 @@ Para cada repositório:
 ### SLACK_WEBHOOK (Task 13)
 
 - Formato esperado: `https://hooks.slack.com/services/T.../B.../...`
-- Enquanto a Task 13 não estiver concluída, manter placeholder não sensível no secret para evitar falha de lookup no workflow.
+- Enquanto a Task 13 não estiver concluída, usar placeholder não sensível como `PENDING_TASK_13` para evitar falha de lookup no workflow.
 
 ## Rotação de secrets
 
-- Frequência recomendada (baseline): a cada **90 dias**, ajustando conforme criticidade do secret e limitações do provedor (ex.: `DATABASE_URL` e chaves de produção com rotação mais rígida; tokens de integração sem suporte de rotação automática podem seguir janela planejada com validação prévia)
+- Frequência recomendada (baseline): a cada **90 dias**
+- Ajustar o intervalo conforme criticidade do secret
+- Considerar limitações do provedor antes da rotação (ex.: tokens sem rotação automática podem seguir janela planejada com validação prévia)
 - Rotacionar imediatamente em caso de incidente ou exposição
 - Sempre atualizar o secret no GitHub antes de invalidar o antigo (janela de transição)
 
