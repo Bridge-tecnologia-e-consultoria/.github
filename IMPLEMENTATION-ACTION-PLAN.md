@@ -205,6 +205,7 @@ lideranca-tech → Node.js 18 + Next.js
 - **Objetivo:** Setup de secrets para CI/CD
 - **Tempo:** 1.5 horas
 - **Deliverable:** Secrets configurados em todos repos
+- **Documentação:** `SECRETS-MANAGEMENT.md` + `.env.example` por repositório
 
 **Secrets Necessários:**
 ```
