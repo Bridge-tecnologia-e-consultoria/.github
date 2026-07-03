@@ -19,4 +19,4 @@
 - Schedule: `weekly`, `sunday`, `03:00` (`UTC`)
 - Reviewers: `Bridge-tecnologia-e-consultoria/devops`
 - Open PR limit: `5`
-- Auto-merge habilitado (`auto-commit: true`)
+- Auto-merge habilitado via configurações do repositório (auto-merge de PRs + regras de proteção)
