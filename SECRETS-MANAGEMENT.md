@@ -51,7 +51,7 @@ Para cada repositório:
 ## Rotação de secrets
 
 - Intervalo recomendado por criticidade:
-  - **30 dias:** credenciais críticas de produção (ex.: `DATABASE_URL` de ambiente produtivo)
+  - **30 dias:** credenciais críticas de produção (ex.: `DATABASE_URL` de ambiente produtivo, `JWT_SECRET`)
   - **60 dias:** API keys sensíveis de integrações externas (ex.: `OPENAI_API_KEY`, `STRIPE_API_KEY`)
   - **90 dias:** tokens de suporte/deploy com menor risco direto
 - Considerar limitações do provedor antes da rotação (ex.: tokens sem rotação automática podem seguir janela planejada com validação prévia)
