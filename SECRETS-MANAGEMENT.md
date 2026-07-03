@@ -37,7 +37,7 @@ Para cada repositório:
 
 ### CODECOV_TOKEN
 
-1. Acesse https://codecov.io/signup
+1. Acesse https://about.codecov.io/sign-up/
 2. Faça login com GitHub
 3. Selecione a organização **Bridge-tecnologia-e-consultoria**
 4. Copie o token do repositório
@@ -53,7 +53,7 @@ Para cada repositório:
 
 - Intervalo recomendado por criticidade:
   - **30 dias:** credenciais críticas de produção (ex.: credenciais dentro de `DATABASE_URL` em ambiente produtivo)
-  - **60 dias:** `JWT_SECRET`, com rotação coordenada e janela de transição para evitar invalidação abrupta de sessões
+  - **30 dias:** `JWT_SECRET`, com rotação coordenada e janela de transição para evitar invalidação abrupta de sessões
   - **60 dias:** API keys sensíveis de integrações externas (ex.: `OPENAI_API_KEY`, `STRIPE_API_KEY`)
   - **90 dias:** tokens de suporte/deploy com menor risco direto
 - Considerar limitações do provedor antes da rotação (ex.: tokens sem rotação automática podem seguir janela planejada com validação prévia)
