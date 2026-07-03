@@ -77,7 +77,7 @@ Boas práticas:
 - rotacione e atualize secret ao primeiro sinal de exposição.
 
 ### 7. Coverage: regra de 80% e medição local
-Cobertura é usada aqui como guardrail, não como troféu isolado. O requisito de 80% indica que mudanças relevantes devem vir acompanhadas de validação automatizada proporcional. Em JavaScript/TypeScript, o fluxo comum usa `npm test -- --coverage`; em Python, `pytest --cov=.`. Se a cobertura cair, o autor precisa decidir entre adicionar testes, ajustar escopo da mudança ou justificar adequadamente uma exceção rara.
+Cobertura é usada aqui como guardrail, não como troféu isolado. O requisito de 80% indica que mudanças relevantes devem vir acompanhadas de validação automatizada proporcional. Em JavaScript/TypeScript, o fluxo comum usa `npm test -- --coverage`; em Python, um exemplo explícito é `pytest --cov=. --cov-report=term-missing`. Se a cobertura cair, o autor precisa decidir entre adicionar testes, ajustar escopo da mudança ou justificar adequadamente uma exceção rara.
 
 ### 8. Relação entre CI/CD e comunicação
 Cada falha relevante precisa ser comunicável. Isso significa logs legíveis, nomes de jobs claros e integração com canais como Slack para build, deploy e alertas. Um pipeline incompreensível é operacionalmente fraco, mesmo quando funciona. O treinamento prepara o time para olhar sinais, não apenas status verde/vermelho.
