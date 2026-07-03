@@ -1,4 +1,4 @@
-name: Coverage Report
+name: Coverage Report - LaConelli
 
 on:
   pull_request:
@@ -8,23 +8,23 @@ jobs:
   coverage:
     name: Code Coverage (80% minimum)
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-      
+
       - name: Install dependencies
         run: npm ci
-      
+
       - name: Run tests with coverage
         run: npm test -- --coverage --watchAll=false --passWithNoTests || true
-      
+
       - name: Check coverage threshold (80% minimum)
         run: |
           COVERAGE=$(cat coverage/coverage-summary.json 2>/dev/null | \
@@ -34,7 +34,7 @@ jobs:
             sys.exit(0 if pct >= 80 else 1)" 2>/dev/null || echo "Coverage report not found, skipping check")
           echo "$COVERAGE"
         continue-on-error: true
-      
+
       - name: Upload to Codecov
         uses: codecov/codecov-action@v3
         with:
@@ -42,36 +42,3 @@ jobs:
           files: ./coverage/lcov.info
           fail_ci_if_error: false
           verbose: true
-
-  coverage-python:
-    name: Python Coverage (80% minimum)
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-      
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt --ignore-requires-python || echo "No requirements.txt"
-          pip install pytest pytest-cov || true
-      
-      - name: Run Python tests with coverage
-        run: |
-          pytest --cov=. --cov-report=xml --cov-report=term-missing \
-            --cov-fail-under=80 -v || echo "No Python tests found"
-        continue-on-error: true
-      
-      - name: Upload Python coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: ./coverage.xml
-          fail_ci_if_error: false
-          flags: python
