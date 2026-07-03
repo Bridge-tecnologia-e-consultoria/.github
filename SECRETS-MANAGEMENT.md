@@ -43,7 +43,7 @@ Para cada repositório:
 
 ## Rotação de secrets
 
-- Frequência recomendada (baseline): a cada **90 dias**, ajustando conforme criticidade do secret e limitações do provedor
+- Frequência recomendada (baseline): a cada **90 dias**, ajustando conforme criticidade do secret e limitações do provedor (ex.: `DATABASE_URL` e chaves de produção com rotação mais rígida; tokens de integração sem suporte de rotação automática podem seguir janela planejada com validação prévia)
 - Rotacionar imediatamente em caso de incidente ou exposição
 - Sempre atualizar o secret no GitHub antes de invalidar o antigo (janela de transição)
 
