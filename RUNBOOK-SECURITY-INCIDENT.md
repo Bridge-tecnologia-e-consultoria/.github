@@ -100,15 +100,7 @@ Esse checklist evita o erro comum de parar quando a urgência baixa, deixando do
 
 
 ### Revisão posterior
-Depois do encerramento, revise se os canais, templates e alertas existentes ajudaram ou atrapalharam a resposta.
-
- Sempre registre qual decisão foi tomada, por quem e com base em qual evidência.
-
- Atualizações curtas e regulares mantêm alinhamento entre investigação, liderança e stakeholders sem criar silêncio operacional perigoso.
-
- Preserve a cadeia de decisão.
-
- Até o fim.
+Depois do encerramento, revise se os canais, templates e alertas existentes ajudaram ou atrapalharam a resposta. Sempre registre qual decisão foi tomada, por quem e com base em qual evidência. Atualizações curtas e regulares mantêm alinhamento entre investigação, liderança e stakeholders sem criar silêncio operacional perigoso, preservando a cadeia de decisão até o fim.
 
 ## 💡 Exemplos Práticos
 ```yaml
@@ -135,4 +127,3 @@ A: O owner designado do incidente com alinhamento de `@leads`.
 
 ## 🆘 Ajuda & Suporte
 Se houver potencial exposição de dado sensível, trate a comunicação como parte da resposta e não como passo opcional.
-

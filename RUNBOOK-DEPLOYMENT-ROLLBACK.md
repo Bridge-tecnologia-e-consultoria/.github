@@ -97,9 +97,7 @@ Após a reversão, confira se filas, jobs assíncronos, integrações externas e
 
 
 ### Confirmação cruzada
-Peça confirmação de estabilidade a pelo menos um owner técnico e um owner operacional.
-
- Registre também o horário final de estabilidade.
+Peça confirmação de estabilidade a pelo menos um owner técnico e um owner operacional. Registre também o horário final de estabilidade para facilitar auditoria e acompanhamento posterior.
 
 ## 💡 Exemplos Práticos
 ```yaml
@@ -126,4 +124,3 @@ A: Só se o risco for menor e o time tiver clareza total do impacto.
 
 ## 🆘 Ajuda & Suporte
 Se o rollback estiver sob tempo crítico, centralize updates em thread única e registre a decisão final no sistema de origem.
-
