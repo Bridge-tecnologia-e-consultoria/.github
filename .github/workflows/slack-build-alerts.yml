@@ -10,6 +10,9 @@ on:
     types: [completed]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   alert-build-failure:
     if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'failure'

@@ -10,6 +10,9 @@ on:
     types: [completed]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   notify-deployment:
     if: github.event_name == 'workflow_dispatch' || contains(github.event.workflow_run.name, 'Deploy') || contains(github.event.workflow_run.name, 'deploy') || contains(github.event.workflow_run.name, 'Release')
