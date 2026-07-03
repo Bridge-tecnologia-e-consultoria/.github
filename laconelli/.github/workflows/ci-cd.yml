@@ -1,4 +1,4 @@
-name: CI/CD Pipeline - VetBooking
+name: CI/CD Pipeline - LaConelli
 
 on:
   push:
@@ -158,7 +158,7 @@ jobs:
     
     environment:
       name: staging
-      url: https://staging-vetbooking.example.com
+      url: https://staging-laconelli.example.com
     
     steps:
       - name: Checkout code
@@ -187,7 +187,7 @@ jobs:
     
     environment:
       name: production
-      url: https://vetbooking.example.com
+      url: https://laconelli.example.com
     
     steps:
       - name: Checkout code
