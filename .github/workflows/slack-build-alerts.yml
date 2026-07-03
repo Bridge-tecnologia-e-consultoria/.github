@@ -1,0 +1,56 @@
+name: Slack Build Alerts
+
+on:
+  workflow_run:
+    workflows:
+      - CI/CD
+      - Build
+      - Test
+      - Pull Request Checks
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  alert-build-failure:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build alert payload
+        id: payload
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          WORKFLOW_NAME: ${{ github.event.workflow_run.name }}
+          CONCLUSION: ${{ github.event.workflow_run.conclusion }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+          RUN_URL: ${{ github.event.workflow_run.html_url }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            TEXT="⚠️ [${REPOSITORY}] @devops build alert workflow triggered manually"
+          else
+            TEXT="🚨 [${REPOSITORY}] @devops Build failed in workflow '${WORKFLOW_NAME}' | Branch: ${BRANCH} | Status: ${CONCLUSION} | Logs: ${RUN_URL}"
+          fi
+
+          PAYLOAD=$(jq -cn --arg text "$TEXT" '{text: $text}')
+          echo "payload=$PAYLOAD" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Slack (#builds + #alerts)
+        env:
+          SLACK_WEBHOOK_BUILD: ${{ secrets.SLACK_WEBHOOK_BUILD }}
+          SLACK_WEBHOOK_ALERTS: ${{ secrets.SLACK_WEBHOOK_ALERTS }}
+          PAYLOAD: ${{ steps.payload.outputs.payload }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_BUILD" ]; then
+            echo "SLACK_WEBHOOK_BUILD secret is not set."
+            exit 1
+          fi
+          if [ -z "$SLACK_WEBHOOK_ALERTS" ]; then
+            echo "SLACK_WEBHOOK_ALERTS secret is not set."
+            exit 1
+          fi
+
+          curl -sS -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_BUILD"
+          curl -sS -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_ALERTS"
