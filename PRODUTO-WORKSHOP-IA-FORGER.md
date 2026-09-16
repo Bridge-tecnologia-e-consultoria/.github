@@ -30,7 +30,7 @@
 16. [Roadmap de 6 Semanas](#16-roadmap-de-6-semanas)
 17. [Riscos, Premissas e Decisões Pendentes](#17-riscos-premissas-e-decisões-pendentes)
 18. [Próximas Ações Recomendadas](#18-próximas-ações-recomendadas)
-19. [Entregáveis Finais (A–H)](#19-entregáveis-finais-a–h)
+19. [Entregáveis Finais (A–H)](#19-entregáveis-finais-ah)
 
 ---
 
@@ -47,7 +47,7 @@
 
 **Público-alvo:** Empresas brasileiras de pequeno, médio e grande porte, com times administrativos, comerciais, de atendimento ou operacionais relevantes. Decisores típicos: CEO/sócio, diretor de operações, head de RH/People, head de inovação ou gestor de processos. **[PREMISSA]** foco inicial em empresas de 30 a 500 colaboradores, por terem orçamento para treinamento estruturado mas ainda não terem equipe interna de IA.
 
-**Formato:** 4 horas (presencial, remoto ou híbrido) — 2h de conteúdo teórico-demonstrativo, 15 min de coffee break, 2h de prática guiada (hands-on), com abertura, diagnóstico rápido e encerramento adicionando ~25–30 min ao redor do núcleo de 4h15 (duração real de porta a porta: **~4h30–4h40**, ver Seção 6).
+**Formato:** 4 horas (presencial, remoto ou híbrido) — 2h de conteúdo teórico-demonstrativo (já incluindo abertura e diagnóstico rápido inicial), 15 min de coffee break, 2h de prática guiada (hands-on). Esse núcleo soma **4h15**; somando o encerramento (síntese, convite a próximos passos e pesquisa de satisfação, 25 min), a duração real de porta a porta é **4h40** (ver Seção 6).
 
 **Principal transformação prometida:** O colaborador sai sabendo *quando usar, como usar e quando não usar* IA — e a empresa sai com um retrato objetivo (diagnóstico) de onde está e o que fazer a seguir.
 
@@ -226,7 +226,7 @@ O workshop **é**: uma experiência prática de capacitação corporativa que tr
 
 ## 6. Agenda Completa de 4 Horas
 
-**Nota sobre duração:** o núcleo vendido como "workshop de 4 horas" corresponde a 2h de conteúdo + 15 min de coffee + 2h de prática = 4h15min. Somando abertura, diagnóstico inicial (já contidos dentro do bloco de conteúdo) e o encerramento com pesquisa de satisfação (após a prática), a duração real de porta a porta fica em **~4h35–4h40**. Isso deve ser comunicado com transparência na proposta comercial, para não gerar expectativa equivocada de horário de término.
+**Nota sobre duração:** o núcleo vendido como "workshop de 4 horas" corresponde a 2h de conteúdo + 15 min de coffee + 2h de prática = **4h15**. Abertura e diagnóstico rápido inicial já estão contidos dentro do bloco de 2h de conteúdo (ver tabela 6.1) — eles não somam tempo extra. Só o encerramento (síntese, convite a próximos passos e pesquisa de satisfação, 25 min) acrescenta tempo além do núcleo, totalizando **4h40** de porta a porta. Isso deve ser comunicado com transparência na proposta comercial, para não gerar expectativa equivocada de horário de término.
 
 ### 6.1 Agenda minuto a minuto
 
@@ -294,7 +294,8 @@ Formato de cada slide: **Título** · Mensagem principal · Conteúdo resumido �
 ### 7.1 Preparação
 
 **Checklist de acesso às ferramentas (enviar por e-mail 48h antes):**
-- [ ] Conta ativa em pelo menos uma ferramenta de IA generativa (ChatGPT, Claude, Gemini ou Copilot);
+- [ ] Conta ativa em uma ferramenta de IA generativa, com acesso confirmado ao recurso de instrução persistente ou agente personalizado (ex.: Custom Instructions/GPTs no ChatGPT, Projects na Claude, Gems no Gemini) — validar previamente qual produto e plano cada participante tem, já que "Copilot" cobre produtos e planos com recursos de agente diferentes entre si;
+- [ ] Se a conta do participante oferecer apenas chat comum, sem esse recurso: usar o prompt estruturado reutilizável (Seção 7.3) como protótipo de chat, deixando claro que ele precisará ser recolado manualmente a cada conversa — não como um agente persistente;
 - [ ] Notebook ou dispositivo próprio carregado;
 - [ ] Acesso à rede Wi-Fi do local confirmado com antecedência;
 - [ ] Login testado antes do evento (evitar cadastro em tempo real);
@@ -302,7 +303,7 @@ Formato de cada slide: **Título** · Mensagem principal · Conteúdo resumido �
 
 **Orientações de dados seguros:**
 - Nunca inserir dado real de cliente, colaborador, contrato ou informação financeira da empresa;
-- Utilizar exclusivamente dados fictícios, anonimizados ou explicitamente autorizados pela liderança presente;
+- Utilizar exclusivamente dados fictícios ou anonimizados nos exercícios — a simples autorização verbal de um líder presente na sala **não é suficiente** para liberar dado real, pois não substitui aprovação formal de segurança/jurídico, minimização do dado, uso de ferramenta já aprovada pela empresa e verificação das condições de tratamento de dados do fornecedor da ferramenta de IA (ver **Política de dados reais nos exercícios**, Seção 12);
 - Em caso de dúvida sobre se um dado é sensível, tratar como sensível.
 
 **Definição de objetivos e seleção do caso de uso:** cada participante escolhe, ainda no módulo 4 da teoria, 1 caso de uso da própria rotina (ver lista de exemplos na introdução deste documento) para levar à prática.
@@ -394,7 +395,7 @@ particularidades do processo que o agente vai apoiar.]
 - **Como evitar que o tempo estoure:** usar cronômetro visível (projetado ou físico); avisar a turma faltando 5 min para o fim de cada nível; ter uma versão "resumida" de cada nível pronta caso o tempo aperte.
 - **Como lidar com participantes avançados:** oferecer desafio extra (ex.: criar uma segunda versão do agente para outro caso de uso, ou testar o agente com um caso "difícil" de propósito).
 - **Como garantir que ninguém use dados confidenciais:** reforçar a regra verbalmente antes da prática, circular ativamente durante os exercícios, e intervir educadamente e sem constranger caso perceba dado sensível sendo inserido.
-- **Como coletar evidências de aprendizado:** solicitar print/captura do agente final e da resposta de teste (usado no relatório pós-workshop); registrar o caso de uso escolhido por cada participante em planilha simples de acompanhamento.
+- **Como coletar evidências de aprendizado:** solicitar print/captura do agente final e da resposta de teste (usado no relatório pós-workshop); registrar o caso de uso escolhido por cada participante em planilha simples de acompanhamento. Seguir o ciclo de vida de dados definido na Seção 12 ("Tratamento de dados dos registros operacionais") para essas capturas e registros — vale mesmo quando não há publicação de case comercial.
 
 ### 7.6 Critérios de avaliação (rubrica 0–3)
 
@@ -452,15 +453,16 @@ particularidades do processo que o agente vai apoiar.]
 4. Uso ferramentas de IA generativa com frequência (pelo menos semanalmente) no meu trabalho.
 5. Sei identificar quando uma resposta de IA pode estar incorreta (alucinação).
 6. Existe uma pessoa ou área responsável por decisões sobre ferramentas de IA na empresa.
-7. Já vi ou ouvi falar de um caso de uso indevido de IA na minha empresa.
+7. Já vi ou ouvi falar de um caso de uso indevido de IA na minha empresa. **(item 7 — não entra na soma de maturidade; ver nota de pontuação abaixo)**
 8. Sinto segurança para experimentar novas ferramentas de IA no trabalho.
 9. Minha liderança incentiva ativamente o uso responsável de IA.
 10. A empresa tem algum processo de revisão humana para resultados gerados por IA em decisões importantes.
 11. Sei a quem recorrer se tiver dúvida sobre uso de IA no trabalho.
 12. Já vi resultados mensuráveis de produtividade com uso de IA na minha área.
 
-**Modelo de pontuação:** soma simples dos 12 itens (0–48 pontos).
-- 0–9: Nível 1 · 10–19: Nível 2 · 20–29: Nível 3 · 30–39: Nível 4 · 40–48: Nível 5.
+**Modelo de pontuação:** o item 7 mede exposição/conhecimento de uso indevido, não maturidade — uma resposta alta nele pode significar tanto "há mais uso indevido" (sinal negativo) quanto "há mais consciência e transparência sobre riscos" (sinal positivo), então ele **não entra na soma** e é sempre reportado à parte, como indicador de atenção (ex.: "X% da turma já presenciou uso indevido de IA na empresa").
+A pontuação de maturidade usa a soma simples dos **11 itens restantes** (1–6, 8–12), variando de 0 a 44 pontos:
+- 0–8: Nível 1 · 9–17: Nível 2 · 18–26: Nível 3 · 27–35: Nível 4 · 36–44: Nível 5.
 
 **Recomendação de ação por estágio:**
 
@@ -484,6 +486,8 @@ particularidades do processo que o agente vai apoiar.]
 8. Recomendaria este workshop a um colega? (NPS 0–10)
 9. Você gostaria de uma conversa sobre os próximos passos para sua área/empresa? (sim/não)
 10. Comentários adicionais (aberta)
+
+**Importante:** este questionário mede satisfação, aprendizado percebido e intenção de aplicação — **não** re-mede maturidade. Ele não repete os itens de maturidade do pré-workshop (Seção 9.2) e não deve ser usado para calcular evolução de nível. A metodologia de comparação de maturidade "antes e depois" está definida na Seção 14 (reaplicação do instrumento de maturidade 30–60 dias após o workshop).
 
 ### 9.4 Modelo de relatório executivo de uma página
 
@@ -660,7 +664,14 @@ resultados e discutir prioridades. [CTA de agendamento]
 
 **Plano B se houver problemas de acesso:** ter modo offline parcial (roteiro impresso dos exercícios); ter hotspot móvel reserva; ter exemplos pré-gravados para demonstração caso a internet caia durante a teoria.
 
-**Política de uso de dados durante a prática:** somente dados fictícios, anonimizados ou explicitamente autorizados; facilitador tem autoridade para interromper e orientar caso veja dado sensível sendo usado.
+**Política de uso de dados durante a prática:** por padrão, somente dados fictícios ou anonimizados; facilitador tem autoridade para interromper e orientar caso veja dado sensível sendo usado.
+
+**Política de dados reais nos exercícios (exceção formal):** a regra padrão acima não deve ser contornada por autorização verbal de um líder presente na sala. Uma exceção pontual para uso de dado real só é aceitável se, **antes do workshop**, todos os itens abaixo estiverem cumpridos e registrados por escrito:
+1. Aprovação formal do time de segurança/jurídico do cliente (não apenas do participante ou do líder de área presente);
+2. Minimização do dado (usar o menor recorte de informação real necessário para o exercício, mascarando o que não for essencial);
+3. Uso restrito a uma ferramenta de IA já formalmente aprovada pela empresa cliente para esse tipo de dado;
+4. Verificação das condições contratuais de tratamento de dados do fornecedor da ferramenta (retenção, uso para treinamento de modelo, localização do processamento).
+Sem essas quatro condições atendidas e documentadas, o exercício segue com dado fictício ou anonimizado, sem exceção. **[VALIDAR com jurídico e com segurança da informação do cliente, caso a exceção seja necessária]**
 
 **Aviso de responsabilidade sugerido (a validar juridicamente):**
 > "Este workshop tem caráter educacional. As orientações sobre uso de IA não substituem aconselhamento jurídico, técnico, financeiro ou de compliance especializado. Os participantes são responsáveis por não inserir dados pessoais, confidenciais ou sensíveis reais durante os exercícios práticos." **[VALIDAR com jurídico antes do uso formal]**
@@ -683,6 +694,15 @@ resultados e discutir prioridades. [CTA de agendamento]
 - 30 dias: envio do relatório executivo consolidado + convite à reunião de devolutiva (se ainda não realizada).
 
 **Modelo de registro de aprendizados e oportunidades comerciais (planilha interna):** empresa, data, nº participantes, nível médio de maturidade, principais riscos identificados, oportunidades comerciais identificadas, status do follow-up, próximo passo agendado.
+
+**Tratamento de dados dos registros operacionais (capturas, planilhas, relatórios, follow-up e cases):** aplica-se a toda captura de tela do agente/resposta de teste, planilha de acompanhamento, relatório executivo e material de follow-up gerado a partir do workshop — inclusive quando nenhum case comercial chega a ser publicado. **[VALIDAR com jurídico antes do piloto]**
+- **Finalidade e consentimento:** informar aos participantes, na abertura do workshop, que evidências de aprendizado (prints, respostas de teste, caso de uso escolhido) serão registradas para fins de relatório executivo e acompanhamento comercial — sem exigir consentimento separado por item, mas deixando a finalidade explícita antes da coleta;
+- **Minimização:** registrar apenas o necessário para o relatório e o follow-up (nome, cargo/área, caso de uso, nível de maturidade) — nunca o conteúdo integral de prompts/respostas que contenham informação além do exercício;
+- **Redação/anonimização:** ao usar qualquer captura fora do relatório interno do próprio cliente (ex.: em material de case comercial), redigir ou anonimizar nome e demais identificadores pessoais, salvo quando a autorização de case (Seção 14) cobrir expressamente aquele uso;
+- **Acesso:** planilha de acompanhamento e relatórios ficam acessíveis apenas à equipe da Bridge diretamente envolvida no atendimento daquele cliente;
+- **Retenção e exclusão:** reter os registros operacionais de um workshop por até 24 meses **[PREMISSA]** após a execução, para fins de acompanhamento comercial e histórico de relacionamento; excluir a pedido do cliente antes desse prazo, exceto pelo relatório executivo já formalmente entregue a ele.
+
+Esse procedimento é distinto da autorização de case (Seção 14), que trata especificamente do uso comercial/público de depoimento, nome da empresa e resultados — não do ciclo de vida interno dos registros operacionais do dia a dia.
 
 ---
 
@@ -727,7 +747,7 @@ resultados e discutir prioridades. [CTA de agendamento]
 
 **Como obter autorização para case:** termo simples de autorização de uso de imagem/depoimento/nome da empresa, assinado digitalmente.
 
-**Como medir antes e depois:** aplicar o diagnóstico de maturidade pré e, 30–60 dias depois, reaplicar uma versão reduzida para medir evolução.
+**Como medir antes e depois:** aplicar o questionário de maturidade completo (Seção 9.2, 11 itens pontuáveis + item 7 à parte) antes do workshop. Entre 30 e 60 dias depois, reaplicar **o mesmo instrumento de 11 itens**, com a mesma escala 0–4 e o mesmo modelo de pontuação (0–44, mesmas faixas de nível) — não o questionário pós-workshop da Seção 9.3, que mede satisfação/aprendizado/NPS e não é comparável ao pré. A evolução de maturidade é calculada pela diferença de pontuação (ou de nível) entre as duas aplicações do questionário de 11 itens; satisfação, aprendizado, intenção de aplicação e NPS continuam sendo acompanhados separadamente, via Seção 9.3.
 
 **Como transformar resultados em case comercial:** estrutura sugerida — contexto do cliente, problema, o que foi feito, resultado percebido (com ressalva de que é autorrelato), depoimento direto.
 
@@ -811,7 +831,7 @@ Prioridade: lançar um **MVP do workshop** rapidamente, sem esperar 100% dos mat
 2. Tabela de preços definitiva por pacote;
 3. Se o FORGER será mencionado institucionalmente já no piloto ou apenas após validação técnica;
 4. Time/responsáveis: quem serão os facilitadores certificados internamente;
-5. Política formal de proteção de dados da própria Bridge para os exercícios práticos;
+5. Política formal de proteção de dados da própria Bridge para os exercícios práticos — a regra padrão do documento já é restritiva (somente dado fictício/anonimizado, sem exceção por autorização verbal — ver Seção 12), mas o procedimento de exceção formal (aprovação de segurança/jurídico, minimização, ferramenta aprovada, condições do fornecedor) ainda precisa ser desenhado e aprovado antes de ser oferecido a qualquer cliente;
 6. Segmento(s) prioritário(s) para os primeiros 90 dias de prospecção.
 
 ---
@@ -855,7 +875,7 @@ Ver template completo e reutilizável na **Seção 7.3**.
 
 ### F. Questionário de maturidade de IA
 
-Ver questionário completo (12 perguntas, escala 0–4, com modelo de pontuação e classificação por nível) na **Seção 9.2**.
+Ver questionário completo (12 perguntas, escala 0–4; 11 delas somadas para o nível de maturidade e 1 reportada à parte como indicador de exposição a uso indevido, com modelo de pontuação e classificação por nível) na **Seção 9.2**.
 
 ### G. As 10 primeiras ações para colocar o workshop no mercado
 
