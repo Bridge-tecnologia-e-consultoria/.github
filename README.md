@@ -8,6 +8,9 @@ Repositório central de documentação, padrões e materiais operacionais do eco
 - [PhD-PROGRESS-DASHBOARD.md](./PhD-PROGRESS-DASHBOARD.md)
 - [PHASE-7-GO-LIVE.md](./PHASE-7-GO-LIVE.md)
 
+## Produtos e Ofertas Comerciais
+- [PRODUTO-WORKSHOP-IA-FORGER.md](./PRODUTO-WORKSHOP-IA-FORGER.md) — Workshop Corporativo de IA Aplicada, Produtividade e Governança (ponte comercial para o FORGER)
+
 ## Training Materials
 - [TRAINING-01-GOVERNANCE.md](./TRAINING-01-GOVERNANCE.md)
 - [TRAINING-02-SECURITY.md](./TRAINING-02-SECURITY.md)
