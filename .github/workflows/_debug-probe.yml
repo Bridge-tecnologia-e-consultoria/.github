@@ -1,0 +1,44 @@
+name: Debug Probe
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe-echo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Just echo
+        run: echo "hello from probe-echo"
+
+  probe-jq:
+    runs-on: ubuntu-latest
+    steps:
+      - name: jq version and basic call
+        run: |
+          jq --version
+          jq -cn --arg text "hi" '{text: $text}'
+
+  probe-output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write to GITHUB_OUTPUT
+        id: out
+        run: |
+          echo "payload=hello" >> "$GITHUB_OUTPUT"
+      - name: Read it back
+        run: echo "value was ${{ steps.out.outputs.payload }}"
+
+  probe-exit0:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Conditional exit 0
+        run: |
+          FOO=""
+          if [ -z "$FOO" ]; then
+            echo "::warning::FOO is empty, exiting 0"
+            exit 0
+          fi
+          echo "should not reach here"
