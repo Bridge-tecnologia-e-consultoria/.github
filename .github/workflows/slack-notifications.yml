@@ -50,7 +50,7 @@ jobs:
           PAYLOAD: ${{ steps.payload.outputs.payload }}
         run: |
           if [ -z "$SLACK_WEBHOOK_MAIN" ]; then
-            echo "SLACK_WEBHOOK_MAIN secret is not set."
-            exit 1
+            echo "::warning::SLACK_WEBHOOK_MAIN secret is not set — skipping Slack notification."
+            exit 0
           fi
           curl -sS -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_MAIN"
