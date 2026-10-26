@@ -1,1 +1,56 @@
-bmFtZTogU2xhY2sgTm90aWZpY2F0aW9ucwoKb246CiAgcHVsbF9yZXF1ZXN0OgogICAgdHlwZXM6IFtvcGVuZWQsIHJlb3BlbmVkLCBjbG9zZWRdCiAgaXNzdWVzOgogICAgdHlwZXM6IFtvcGVuZWQsIHJlb3BlbmVkLCBjbG9zZWRdCiAgd29ya2Zsb3dfZGlzcGF0Y2g6CgpwZXJtaXNzaW9uczoKICBjb250ZW50czogcmVhZAoKam9iczoKICBwcm9iZS1lY2hvOgogICAgcnVucy1vbjogdWJ1bnR1LWxhdGVzdAogICAgc3RlcHM6CiAgICAgIC0gbmFtZTogSnVzdCBlY2hvCiAgICAgICAgcnVuOiBlY2hvICJoZWxsbyBmcm9tIHByb2JlLWVjaG8iCgogIG5vdGlmeToKICAgIHJ1bnMtb246IHVidW50dS1sYXRlc3QKICAgIHN0ZXBzOgogICAgICAtIG5hbWU6IEJ1aWxkIG5vdGlmaWNhdGlvbiBwYXlsb2FkCiAgICAgICAgaWQ6IHBheWxvYWQKICAgICAgICBlbnY6CiAgICAgICAgICBFVkVOVF9OQU1FOiAkeyB7IGdpdGh1Yi5ldmVudF9uYW1lIH19CiAgICAgICAgICBBQ1RJT046ICR7eyBnaXRodWIuZXZlbnQuYWN0aW9uIH19CiAgICAgICAgICBQUl9USVRMRTogJHt7IGdpdGh1Yi5ldmVudC5wdWxsX3JlcXVlc3QudGl0bGUgfX0KICAgICAgICAgIFBSX1VSTDogJHt7IGdpdGh1Yi5ldmVudC5wdWxsX3JlcXVlc3QuaHRtbF91cmwgfX0KICAgICAgICAgIFBSX0FVVEhPUjogJHt7IGdpdGh1Yi5ldmVudC5wdWxsX3JlcXVlc3QudXNlci5sb2dpbiB9fQogICAgICAgICAgUFJfTUVSR0VEOiAkeyB7IGdpdGh1Yi5ldmVudC5wdWxsX3JlcXVlc3QubWVyZ2VkIH19CiAgICAgICAgICBJU1NVRV9USVRMRTogJHt7IGdpdGh1Yi5ldmVudC5pc3N1ZS50aXRsZSB9fQogICAgICAgICAgSVNTVUVfVVJMOiAkeyB7IGdpdGh1Yi5ldmVudC5pc3N1ZS5odG1sX3VybCB9fQogICAgICAgICAgSVNTVUVfQVVUSE9SOiAkeyB7IGdpdGh1Yi5ldmVudC5pc3N1ZS51c2VyLmxvZ2luIH19CiAgICAgICAgICBJU1NVRV9OVU1CRVI6ICR7eyBnaXRodWIuZXZlbnQuaXNzdWUubnVtYmVyIH19CiAgICAgICAgICBSRVBPU0lUT1JZOiAkeyB7IGdpdGh1Yi5yZXBvc2l0b3J5IH19CiAgICAgICAgcnVuOiB8CiAgICAgICAgICBpZiBbICIkRVZFTlRfTkFNRSIgPSAicHVsbF9yZXF1ZXN0IiBdOyB0aGVuCiAgICAgICAgICAgIFNUQVRVUz0iJEFDVElPTiIKICAgICAgICAgICAgaWYgWyAiJEFDVElPTiIgPSAiY2xvc2VkIiBdICYmIFsgIiRQUl9NRVJHRUQiID0gInRydWUiIF07IHRoZW4KICAgICAgICAgICAgICBTVEFUVVM9Im1lcmdlZCIKICAgICAgICAgICAgZmkKICAgICAgICAgICAgVEVYVD0i8J+TgyBbJHtSRVBPU0lUT1JZfV0gUFIgJHtTVEFUVVN9OiAkeyR7UFJfVElUTEV9IHwgQXV0aG9yOiBAJHtQUl9BVVRIT1J9IHwgJHtQUl9VUkx9IgogICAgICAgICAgZWxpZiBbICIkRVZFTlRfTkFNRSIgPSAiaXNzdWVzIiBdOyB0aGVuCiAgICAgICAgICAgIFRFWFQ9IvCfk50gWyR7UkVQT1NJVE9SWX1dIElzc3VlICR7QUNUSU9OfTogIyR7SVNTVUVfTlVNQkVSfSAke0lTU1VFX1RJVExFfSB8IEF1dGhvcjogQCR7SVNTVUVfQVVUSE9SfSB8ICR7SVNTVUVfVVJMfSIKICAgICAgICAgIGVsc2UKICAgICAgICAgICAgVEVYVD0i4oSXIFskUkVQT1NJVE9SWV0gU2xhY2sgbm90aWZpY2F0aW9uIHdvcmtmbG93IHRyaWdnZXJlZCBtYW51YWxseSIKICAgICAgICAgIGZpCgogICAgICAgICAgUEFZTE9BRD0kKGpxIC1jbiAtLWFyZyB0ZXh0ICIkVEVYVCIgJ3t0ZXh0OiAkdGV4dH0nKQogICAgICAgICAgZWNobyAicGF5bG9hZD0kUEFZTE9BRCIgPj4gIiRHSVRIVUJfT1VURlVUIgoKICAgICAgLSBuYW1lOiBQb3N0IHRvIFNsYWNrICgjZGV2LW5vdGlmaWNhdGlvbnMpCiAgICAgICAgZW52OgogICAgICAgICAgU0xBQ0tfV0VCSE9PS19NQUlOOiAkeyB7IHNlY3JldHMuU0xBQ0tfV0VCSE9PS19NQUlOIH19CiAgICAgICAgICBQQVlMT0FEOiAkeyB7IHN0ZXBzLnBheWxvYWQub3V0cHV0cy5wYXlsb2FkIH19CiAgICAgICAgcnVuOiB8CiAgICAgICAgICBpZiBbIC16ICIkU0xBQ0tfV0VCSE9PS19NQUlOIiBdOyB0aGVuCiAgICAgICAgICAgIGVjaG8gIjo6d2FybmluZzo6U0xBQ0tfV0VCSE9PS19NQUlOIHNlY3JldCBpcyBub3Qgc2V0IOKAlCBza2lwcGluZyBTbGFjayBub3RpZmljYXRpb24uIgogICAgICAgICAgICBleGl0IDAKICAgICAgICAgIGZpCiAgICAgICAgICBjdXJsIC1zUyAtWCBQT1NUIC1IICdDb250ZW50LXR5cGU6IGFwcGxpY2F0aW9uL2pzb24nIC0tZGF0YSAiJFBBWUxPQUQiICIkU0xBQ0tfV0VCSE9PS19NQUlOIgo=
+name: Slack Notifications
+
+on:
+  pull_request:
+    types: [opened, reopened, closed]
+  issues:
+    types: [opened, reopened, closed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build notification payload
+        id: payload
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          ACTION: ${{ github.event.action }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+          PR_MERGED: ${{ github.event.pull_request.merged }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+          ISSUE_AUTHOR: ${{ github.event.issue.user.login }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          if [ "$EVENT_NAME" = "pull_request" ]; then
+            STATUS="$ACTION"
+            if [ "$ACTION" = "closed" ] && [ "$PR_MERGED" = "true" ]; then
+              STATUS="merged"
+            fi
+            TEXT="📣 [${REPOSITORY}] PR ${STATUS}: ${PR_TITLE} | Author: @${PR_AUTHOR} | ${PR_URL}"
+          elif [ "$EVENT_NAME" = "issues" ]; then
+            TEXT="📝 [${REPOSITORY}] Issue ${ACTION}: #${ISSUE_NUMBER} ${ISSUE_TITLE} | Author: @${ISSUE_AUTHOR} | ${ISSUE_URL}"
+          else
+            TEXT="ℹ️ [${REPOSITORY}] Slack notification workflow triggered manually"
+          fi
+
+          PAYLOAD=$(jq -cn --arg text "$TEXT" '{text: $text}')
+          echo "payload=$PAYLOAD" >> "$GITHUB_OUTPUT"
+
+      - name: Post to Slack (#dev-notifications)
+        env:
+          SLACK_WEBHOOK_MAIN: ${{ secrets.SLACK_WEBHOOK_MAIN }}
+          PAYLOAD: ${{ steps.payload.outputs.payload }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_MAIN" ]; then
+            echo "::warning::SLACK_WEBHOOK_MAIN secret is not set — skipping Slack notification."
+            exit 0
+          fi
+          curl -sS -X POST -H 'Content-type: application/json' --data "$PAYLOAD" "$SLACK_WEBHOOK_MAIN"
